@@ -56,7 +56,7 @@ def main(opt):
     criterionL1 = nn.L1Loss().cuda()
 
     import sys
-    for e in range(350, opt.epochs):
+    for e in range(0, opt.epochs):
         torch.cuda.empty_cache()
         hist_net.train()
         lab_net.train()
@@ -140,41 +140,41 @@ def main(opt):
         torch.save({'epoch': e+1, 
                     'state_dict': hist_net.state_dict(),
                     'optimizer' : hist_optimizer.state_dict()
-                    }, os.path.join(opt.save_hist_dir, "Hist_d24_last.pth"))
+                    }, os.path.join(opt.save_hist_dir, "Hist_d16_last.pth"))
 
         torch.save({'epoch': e+1, 
                 'state_dict': lab_net.state_dict(),
                 'optimizer' : lab_optimizer.state_dict()
-                }, os.path.join(opt.save_lab_dir, "Lab_d24_last.pth"))
+                }, os.path.join(opt.save_lab_dir, "Lab_d16_last.pth"))
 
         torch.save({'epoch': e+1, 
                 'state_dict': sRGB_net.state_dict(),
                 'optimizer' : sRGB_optimizer.state_dict()
-                }, os.path.join(opt.save_sRGB_dir,"sRGB_d24_last.pth"))
+                }, os.path.join(opt.save_sRGB_dir,"sRGB_d16_last.pth"))
         
         ### Save model ###
         if (e+1)>200 or (e+1)%10==0 or e==0:
             torch.save({'epoch': e+1, 
                     'state_dict': hist_net.state_dict(),
                     'optimizer' : hist_optimizer.state_dict()
-                    }, os.path.join(opt.save_hist_dir, "Hist_d24_epoch_{}.pth".format(e+1)))
+                    }, os.path.join(opt.save_hist_dir, "Hist_d16_epoch_{}.pth".format(e+1)))
 
             torch.save({'epoch': e+1, 
                     'state_dict': lab_net.state_dict(),
                     'optimizer' : lab_optimizer.state_dict()
-                    }, os.path.join(opt.save_lab_dir, "Lab_d24_epoch_{}.pth".format(e+1)))
+                    }, os.path.join(opt.save_lab_dir, "Lab_d16_epoch_{}.pth".format(e+1)))
 
             torch.save({'epoch': e+1, 
                     'state_dict': sRGB_net.state_dict(),
                     'optimizer' : sRGB_optimizer.state_dict()
-                    }, os.path.join(opt.save_sRGB_dir,"sRGB_d24_epoch_{}.pth".format(e+1)))
+                    }, os.path.join(opt.save_sRGB_dir,"sRGB_d16_epoch_{}.pth".format(e+1)))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='histogram_network')
     # global settings
     parser.add_argument('--batch_size', type=int, default=120, help='training batch size')
-    parser.add_argument('--epochs', type=int, default=500, help='the starting epoch count')
+    parser.add_argument('--epochs', type=int, default=350, help='the starting epoch count')
     parser.add_argument('--lr', type=float, default=0.0002, help='initial learning rate')
     parser.add_argument('--patch_size', type=int, default=128, help='training patch_size')
     parser.add_argument('--embed_dim', type=int, default=16, help='dim of emdeding features')
