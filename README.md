@@ -32,7 +32,7 @@ The primary goal of white balance (WB) for sRGB images is to correct inaccurate 
 
 ### Testing
 - Please replace `dir_img` with the path of the dataset you want to test.
-- Our pre-trained models are provided in [here](http://gofile.me/65TdH/uFRlyP7lw).
+- Our pre-trained models are provided in [here](https://drive.google.com/drive/folders/18hIjNPnQlaWZLpLVvg_T0nFuYbVl-yzk?usp=sharing).
 
   ```python
   python test.py --dir_img ./datasets/test/cube/input
@@ -57,7 +57,7 @@ The primary goal of white balance (WB) for sRGB images is to correct inaccurate 
   
 ### Testing
 - The testing data is configured based on the methodology described in [Mixed-illumination dataset](https://arxiv.org/abs/2109.08750).
-- Our pre-trained models are provided in [here](http://gofile.me/65TdH/o3TpzcX0O).
+- Our pre-trained models are provided in [here](https://drive.google.com/drive/folders/1WDNnR8iNH2EJWjvz5Y1Yn3FGzM_lAke5?usp=sharing).
 
   ```python
   python test_tds.py --wb-settings <WB SETTING 1> <WB SETTING 2> ... <WB SETTING N> --testing-dir ./datasets/test/mixed/input
